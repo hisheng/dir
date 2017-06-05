@@ -8,8 +8,15 @@
 require './../vendor/autoload.php';
 $dir = new \Dir\Dir();
 
+$clilds = $dir->path("D:/zimu/srts/unsaved")->childs();
+var_dump($clilds);
+exit;
+
 $files = $dir->path("D:/zimu/srts/unsaved")->gets();
 var_dump($files);
+
+
+
 
 foreach ($files as $file){
     var_dump(file_get_contents($file));

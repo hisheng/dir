@@ -11,6 +11,7 @@ class Dir
 {
     public $path;
     private $files = [];
+    private $childs = [];
     
     public function __construct()
     {
@@ -52,5 +53,27 @@ class Dir
         }
     }
     
-    
+    //列出 本目录下 所有的一级子列表
+    public function childs(){
+        $this->getLists($this->path);
+        return $this->childs;
+    }
+    //列出 本目录下 所有的一级列表
+    public function getLists($path){
+        if(is_dir($path)){
+            $dh = opendir($path);
+            while (false !== ($file = readdir($dh))){
+                $newPath = $path.'./'.$file;
+                if(is_file($newPath)){
+                    $this->childs[] = $newPath;
+                }
+                if(is_dir($newPath)){
+                    if(($file != '.') && ($file != '..')){
+                        $this->childs[] = $newPath;
+                    }
+                }
+            }
+            closedir($dh);
+        }
+    }
 }
