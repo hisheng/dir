@@ -8,5 +8,9 @@
 require './../vendor/autoload.php';
 $dir = new \Dir\Dir();
 
-$files = $dir->path()->gets();
-var_dump($files);
+$files = $dir->path("D:/zimu/srts/unsaved")->gets();
+//var_dump($files);
+//
+//foreach ($files as $file){
+//    var_dump(file_get_contents($file));
+//}

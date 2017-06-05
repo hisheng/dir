@@ -19,7 +19,7 @@ class Dir
     
     public function path($path = ''){
         if($path){
-            $this->path = $path;
+            $this->path = realpath($path);
         }
         return $this;
     }
@@ -36,17 +36,17 @@ class Dir
             $dh = opendir($path);
             if($dh){
                 while (false !== ($file = readdir($dh))) {
-                    $newPath = $this->path.'/'.$file;
+                    $newPath = $path.'./'.$file;
                     if(is_file($newPath)){
-                        $this->files[]  = $newPath;
+                        $this->files[]  = $newPath ;
                     }
                     if(is_dir($newPath)){
                         if(($file != '.') && ($file != '..')){
                             $this->getPathFiles($newPath);
                         }
-                       
                     }
                 }
+                var_dump($file);
             }
             closedir($dh);
         }
