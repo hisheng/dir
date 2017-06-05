@@ -8,10 +8,14 @@
 require './../vendor/autoload.php';
 $dir = new \Dir\Dir();
 
+
+//列出 本目录下 所有的一级子列表
 $clilds = $dir->path("D:/zimu/srts/unsaved")->childs();
 var_dump($clilds);
 exit;
 
+
+//取出某个 路径下面的所有文件
 $files = $dir->path("D:/zimu/srts/unsaved")->gets();
 var_dump($files);
 
