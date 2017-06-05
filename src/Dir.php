@@ -46,7 +46,7 @@ class Dir
                         }
                     }
                 }
-                var_dump($file);
+                //var_dump($file);
             }
             closedir($dh);
         }
